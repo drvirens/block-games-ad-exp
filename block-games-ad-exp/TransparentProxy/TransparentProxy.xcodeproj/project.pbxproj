@@ -1,0 +1,588 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B687BF0A2C699CFE00B6C518 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B687BF092C699CFE00B6C518 /* AppDelegate.m */; };
+		B687BF0D2C699CFE00B6C518 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B687BF0C2C699CFE00B6C518 /* SceneDelegate.m */; };
+		B687BF102C699CFE00B6C518 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B687BF0F2C699CFE00B6C518 /* ViewController.m */; };
+		B687BF132C699CFE00B6C518 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = B687BF122C699CFE00B6C518 /* Base */; };
+		B687BF152C699D0000B6C518 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B687BF142C699D0000B6C518 /* Assets.xcassets */; };
+		B687BF182C699D0000B6C518 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = B687BF172C699D0000B6C518 /* Base */; };
+		B687BF1B2C699D0000B6C518 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B687BF1A2C699D0000B6C518 /* main.m */; };
+		B687BF2C2C699D2300B6C518 /* PacketTunnelProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = B687BF2B2C699D2300B6C518 /* PacketTunnelProvider.m */; };
+		B687BF392C69AE4400B6C518 /* LVVPNManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B687BF382C69AE4400B6C518 /* LVVPNManager.m */; };
+		B687BF3C2C69AE8100B6C518 /* LVMainLineModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B687BF3B2C69AE8100B6C518 /* LVMainLineModel.m */; };
+		B687BF412C69B80100B6C518 /* NEKitRule.conf in Resources */ = {isa = PBXBuildFile; fileRef = B687BF402C69B80100B6C518 /* NEKitRule.conf */; };
+		B687BF442C69CC0800B6C518 /* TheExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B687BF252C699D2300B6C518 /* TheExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B687BF482C6AF60400B6C518 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B687BF272C699D2300B6C518 /* NetworkExtension.framework */; };
+		B687BF492C6AF60400B6C518 /* NetworkExtension.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B687BF272C699D2300B6C518 /* NetworkExtension.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B687BF422C69CBFB00B6C518 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B687BEFD2C699CFE00B6C518 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B687BF242C699D2300B6C518;
+			remoteInfo = TheExtension;
+		};
+		B687BF452C69CC0800B6C518 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B687BEFD2C699CFE00B6C518 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B687BF242C699D2300B6C518;
+			remoteInfo = TheExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B687BF472C69CC0800B6C518 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				B687BF442C69CC0800B6C518 /* TheExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B687BF4A2C6AF60400B6C518 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				B687BF492C6AF60400B6C518 /* NetworkExtension.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		B687BF052C699CFE00B6C518 /* TransparentProxy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TransparentProxy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B687BF082C699CFE00B6C518 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		B687BF092C699CFE00B6C518 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		B687BF0B2C699CFE00B6C518 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
+		B687BF0C2C699CFE00B6C518 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
+		B687BF0E2C699CFE00B6C518 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		B687BF0F2C699CFE00B6C518 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		B687BF122C699CFE00B6C518 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B687BF142C699D0000B6C518 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B687BF172C699D0000B6C518 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B687BF192C699D0000B6C518 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B687BF1A2C699D0000B6C518 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		B687BF252C699D2300B6C518 /* TheExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TheExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		B687BF272C699D2300B6C518 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
+		B687BF2A2C699D2300B6C518 /* PacketTunnelProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PacketTunnelProvider.h; sourceTree = "<group>"; };
+		B687BF2B2C699D2300B6C518 /* PacketTunnelProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PacketTunnelProvider.m; sourceTree = "<group>"; };
+		B687BF2D2C699D2300B6C518 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B687BF2E2C699D2300B6C518 /* TheExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TheExtension.entitlements; sourceTree = "<group>"; };
+		B687BF362C699D7700B6C518 /* TransparentProxy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TransparentProxy.entitlements; sourceTree = "<group>"; };
+		B687BF372C69AE4400B6C518 /* LVVPNManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LVVPNManager.h; sourceTree = "<group>"; };
+		B687BF382C69AE4400B6C518 /* LVVPNManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LVVPNManager.m; sourceTree = "<group>"; };
+		B687BF3A2C69AE8100B6C518 /* LVMainLineModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LVMainLineModel.h; sourceTree = "<group>"; };
+		B687BF3B2C69AE8100B6C518 /* LVMainLineModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LVMainLineModel.m; sourceTree = "<group>"; };
+		B687BF3F2C69B1D500B6C518 /* VPNCOnfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPNCOnfiguration.h; sourceTree = "<group>"; };
+		B687BF402C69B80100B6C518 /* NEKitRule.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = NEKitRule.conf; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B687BF022C699CFE00B6C518 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B687BF222C699D2300B6C518 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B687BF482C6AF60400B6C518 /* NetworkExtension.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B687BEFC2C699CFE00B6C518 = {
+			isa = PBXGroup;
+			children = (
+				B687BF072C699CFE00B6C518 /* TransparentProxy */,
+				B687BF292C699D2300B6C518 /* TheExtension */,
+				B687BF262C699D2300B6C518 /* Frameworks */,
+				B687BF062C699CFE00B6C518 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B687BF062C699CFE00B6C518 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B687BF052C699CFE00B6C518 /* TransparentProxy.app */,
+				B687BF252C699D2300B6C518 /* TheExtension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B687BF072C699CFE00B6C518 /* TransparentProxy */ = {
+			isa = PBXGroup;
+			children = (
+				B687BF402C69B80100B6C518 /* NEKitRule.conf */,
+				B687BF362C699D7700B6C518 /* TransparentProxy.entitlements */,
+				B687BF082C699CFE00B6C518 /* AppDelegate.h */,
+				B687BF092C699CFE00B6C518 /* AppDelegate.m */,
+				B687BF0B2C699CFE00B6C518 /* SceneDelegate.h */,
+				B687BF0C2C699CFE00B6C518 /* SceneDelegate.m */,
+				B687BF0E2C699CFE00B6C518 /* ViewController.h */,
+				B687BF0F2C699CFE00B6C518 /* ViewController.m */,
+				B687BF112C699CFE00B6C518 /* Main.storyboard */,
+				B687BF142C699D0000B6C518 /* Assets.xcassets */,
+				B687BF162C699D0000B6C518 /* LaunchScreen.storyboard */,
+				B687BF192C699D0000B6C518 /* Info.plist */,
+				B687BF1A2C699D0000B6C518 /* main.m */,
+				B687BF372C69AE4400B6C518 /* LVVPNManager.h */,
+				B687BF382C69AE4400B6C518 /* LVVPNManager.m */,
+				B687BF3A2C69AE8100B6C518 /* LVMainLineModel.h */,
+				B687BF3B2C69AE8100B6C518 /* LVMainLineModel.m */,
+				B687BF3F2C69B1D500B6C518 /* VPNCOnfiguration.h */,
+			);
+			path = TransparentProxy;
+			sourceTree = "<group>";
+		};
+		B687BF262C699D2300B6C518 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B687BF272C699D2300B6C518 /* NetworkExtension.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B687BF292C699D2300B6C518 /* TheExtension */ = {
+			isa = PBXGroup;
+			children = (
+				B687BF2A2C699D2300B6C518 /* PacketTunnelProvider.h */,
+				B687BF2B2C699D2300B6C518 /* PacketTunnelProvider.m */,
+				B687BF2D2C699D2300B6C518 /* Info.plist */,
+				B687BF2E2C699D2300B6C518 /* TheExtension.entitlements */,
+			);
+			path = TheExtension;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B687BF042C699CFE00B6C518 /* TransparentProxy */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B687BF1E2C699D0000B6C518 /* Build configuration list for PBXNativeTarget "TransparentProxy" */;
+			buildPhases = (
+				B687BF012C699CFE00B6C518 /* Sources */,
+				B687BF022C699CFE00B6C518 /* Frameworks */,
+				B687BF032C699CFE00B6C518 /* Resources */,
+				B687BF472C69CC0800B6C518 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B687BF432C69CBFB00B6C518 /* PBXTargetDependency */,
+				B687BF462C69CC0800B6C518 /* PBXTargetDependency */,
+			);
+			name = TransparentProxy;
+			productName = TransparentProxy;
+			productReference = B687BF052C699CFE00B6C518 /* TransparentProxy.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B687BF242C699D2300B6C518 /* TheExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B687BF322C699D2300B6C518 /* Build configuration list for PBXNativeTarget "TheExtension" */;
+			buildPhases = (
+				B687BF212C699D2300B6C518 /* Sources */,
+				B687BF222C699D2300B6C518 /* Frameworks */,
+				B687BF232C699D2300B6C518 /* Resources */,
+				B687BF4A2C6AF60400B6C518 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TheExtension;
+			productName = TheExtension;
+			productReference = B687BF252C699D2300B6C518 /* TheExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B687BEFD2C699CFE00B6C518 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1540;
+				TargetAttributes = {
+					B687BF042C699CFE00B6C518 = {
+						CreatedOnToolsVersion = 15.4;
+					};
+					B687BF242C699D2300B6C518 = {
+						CreatedOnToolsVersion = 15.4;
+					};
+				};
+			};
+			buildConfigurationList = B687BF002C699CFE00B6C518 /* Build configuration list for PBXProject "TransparentProxy" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B687BEFC2C699CFE00B6C518;
+			productRefGroup = B687BF062C699CFE00B6C518 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B687BF042C699CFE00B6C518 /* TransparentProxy */,
+				B687BF242C699D2300B6C518 /* TheExtension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B687BF032C699CFE00B6C518 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B687BF152C699D0000B6C518 /* Assets.xcassets in Resources */,
+				B687BF412C69B80100B6C518 /* NEKitRule.conf in Resources */,
+				B687BF182C699D0000B6C518 /* Base in Resources */,
+				B687BF132C699CFE00B6C518 /* Base in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B687BF232C699D2300B6C518 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B687BF012C699CFE00B6C518 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B687BF3C2C69AE8100B6C518 /* LVMainLineModel.m in Sources */,
+				B687BF102C699CFE00B6C518 /* ViewController.m in Sources */,
+				B687BF0A2C699CFE00B6C518 /* AppDelegate.m in Sources */,
+				B687BF392C69AE4400B6C518 /* LVVPNManager.m in Sources */,
+				B687BF1B2C699D0000B6C518 /* main.m in Sources */,
+				B687BF0D2C699CFE00B6C518 /* SceneDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B687BF212C699D2300B6C518 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B687BF2C2C699D2300B6C518 /* PacketTunnelProvider.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B687BF432C69CBFB00B6C518 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B687BF242C699D2300B6C518 /* TheExtension */;
+			targetProxy = B687BF422C69CBFB00B6C518 /* PBXContainerItemProxy */;
+		};
+		B687BF462C69CC0800B6C518 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B687BF242C699D2300B6C518 /* TheExtension */;
+			targetProxy = B687BF452C69CC0800B6C518 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B687BF112C699CFE00B6C518 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B687BF122C699CFE00B6C518 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		B687BF162C699D0000B6C518 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B687BF172C699D0000B6C518 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B687BF1C2C699D0000B6C518 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		B687BF1D2C699D0000B6C518 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B687BF1F2C699D0000B6C518 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = TransparentProxy/TransparentProxy.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = FJ585C7YHN;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TransparentProxy/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ai.msg.nxt.TransparentProxy;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B687BF202C699D0000B6C518 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = TransparentProxy/TransparentProxy.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = FJ585C7YHN;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TransparentProxy/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ai.msg.nxt.TransparentProxy;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		B687BF332C699D2300B6C518 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = TheExtension/TheExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = FJ585C7YHN;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TheExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = TheExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ai.msg.nxt.TransparentProxy.TheExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B687BF342C699D2300B6C518 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = TheExtension/TheExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = FJ585C7YHN;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TheExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = TheExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ai.msg.nxt.TransparentProxy.TheExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B687BF002C699CFE00B6C518 /* Build configuration list for PBXProject "TransparentProxy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B687BF1C2C699D0000B6C518 /* Debug */,
+				B687BF1D2C699D0000B6C518 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B687BF1E2C699D0000B6C518 /* Build configuration list for PBXNativeTarget "TransparentProxy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B687BF1F2C699D0000B6C518 /* Debug */,
+				B687BF202C699D0000B6C518 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B687BF322C699D2300B6C518 /* Build configuration list for PBXNativeTarget "TheExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B687BF332C699D2300B6C518 /* Debug */,
+				B687BF342C699D2300B6C518 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B687BEFD2C699CFE00B6C518 /* Project object */;
+}
