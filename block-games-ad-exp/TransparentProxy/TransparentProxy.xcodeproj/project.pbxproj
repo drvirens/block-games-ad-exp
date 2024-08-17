@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B670E5F52C706EDF00D11063 /* Documentation.html in Resources */ = {isa = PBXBuildFile; fileRef = B670E5EE2C706EDF00D11063 /* Documentation.html */; };
+		B670E5F62C706EDF00D11063 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = B670E5F02C706EDF00D11063 /* GCDAsyncSocket.m */; };
+		B670E5F72C706EDF00D11063 /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = B670E5F22C706EDF00D11063 /* GCDAsyncUdpSocket.m */; };
 		B687BF0A2C699CFE00B6C518 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B687BF092C699CFE00B6C518 /* AppDelegate.m */; };
 		B687BF0D2C699CFE00B6C518 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B687BF0C2C699CFE00B6C518 /* SceneDelegate.m */; };
 		B687BF102C699CFE00B6C518 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B687BF0F2C699CFE00B6C518 /* ViewController.m */; };
@@ -66,6 +69,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B670E5EE2C706EDF00D11063 /* Documentation.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Documentation.html; sourceTree = "<group>"; };
+		B670E5EF2C706EDF00D11063 /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
+		B670E5F02C706EDF00D11063 /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
+		B670E5F12C706EDF00D11063 /* GCDAsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncUdpSocket.h; sourceTree = "<group>"; };
+		B670E5F22C706EDF00D11063 /* GCDAsyncUdpSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncUdpSocket.m; sourceTree = "<group>"; };
+		B670E5F42C706EDF00D11063 /* CocoaAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CocoaAsyncSocket.h; path = Common/CocoaAsyncSocket.h; sourceTree = SOURCE_ROOT; };
 		B687BF052C699CFE00B6C518 /* TransparentProxy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TransparentProxy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B687BF082C699CFE00B6C518 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B687BF092C699CFE00B6C518 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -112,6 +121,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B670E5ED2C706EB000D11063 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				B670E5F42C706EDF00D11063 /* CocoaAsyncSocket.h */,
+				B670E5F32C706EDF00D11063 /* GCD */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
+		B670E5F32C706EDF00D11063 /* GCD */ = {
+			isa = PBXGroup;
+			children = (
+				B670E5EE2C706EDF00D11063 /* Documentation.html */,
+				B670E5EF2C706EDF00D11063 /* GCDAsyncSocket.h */,
+				B670E5F02C706EDF00D11063 /* GCDAsyncSocket.m */,
+				B670E5F12C706EDF00D11063 /* GCDAsyncUdpSocket.h */,
+				B670E5F22C706EDF00D11063 /* GCDAsyncUdpSocket.m */,
+			);
+			name = GCD;
+			path = Common/GCD;
+			sourceTree = SOURCE_ROOT;
+		};
 		B687BEFC2C699CFE00B6C518 = {
 			isa = PBXGroup;
 			children = (
@@ -167,6 +198,7 @@
 		B687BF292C699D2300B6C518 /* TheExtension */ = {
 			isa = PBXGroup;
 			children = (
+				B670E5ED2C706EB000D11063 /* Common */,
 				B687BF2A2C699D2300B6C518 /* PacketTunnelProvider.h */,
 				B687BF2B2C699D2300B6C518 /* PacketTunnelProvider.m */,
 				B687BF2D2C699D2300B6C518 /* Info.plist */,
@@ -268,6 +300,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B670E5F52C706EDF00D11063 /* Documentation.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,6 +324,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B670E5F62C706EDF00D11063 /* GCDAsyncSocket.m in Sources */,
+				B670E5F72C706EDF00D11063 /* GCDAsyncUdpSocket.m in Sources */,
 				B687BF2C2C699D2300B6C518 /* PacketTunnelProvider.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

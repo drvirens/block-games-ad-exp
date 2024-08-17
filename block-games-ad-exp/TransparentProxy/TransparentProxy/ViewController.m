@@ -71,7 +71,7 @@ static os_log_t myLog;
     tunnelProtocol.providerConfiguration = @{
       @"username": @"dummyuser",
       @"password": @"dummypassword",
-      @"serverAddress": @"101.254.225.172",
+      @"serverAddress": @"8.8.8.8",
       @"serverPort": @9877
     };
     
