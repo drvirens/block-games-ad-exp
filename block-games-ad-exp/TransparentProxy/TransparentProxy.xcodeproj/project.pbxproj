@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B62404DA2C72E40F00F132C9 /* client.ovpn in Resources */ = {isa = PBXBuildFile; fileRef = B62404D92C72E40F00F132C9 /* client.ovpn */; };
 		B670E5F52C706EDF00D11063 /* Documentation.html in Resources */ = {isa = PBXBuildFile; fileRef = B670E5EE2C706EDF00D11063 /* Documentation.html */; };
 		B670E5F62C706EDF00D11063 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = B670E5F02C706EDF00D11063 /* GCDAsyncSocket.m */; };
 		B670E5F72C706EDF00D11063 /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = B670E5F22C706EDF00D11063 /* GCDAsyncUdpSocket.m */; };
@@ -69,6 +70,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B62404D92C72E40F00F132C9 /* client.ovpn */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = client.ovpn; sourceTree = "<group>"; };
 		B670E5EE2C706EDF00D11063 /* Documentation.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Documentation.html; sourceTree = "<group>"; };
 		B670E5EF2C706EDF00D11063 /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
 		B670E5F02C706EDF00D11063 /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 		B687BF072C699CFE00B6C518 /* TransparentProxy */ = {
 			isa = PBXGroup;
 			children = (
+				B62404D92C72E40F00F132C9 /* client.ovpn */,
 				B687BF402C69B80100B6C518 /* NEKitRule.conf */,
 				B687BF362C699D7700B6C518 /* TransparentProxy.entitlements */,
 				B687BF082C699CFE00B6C518 /* AppDelegate.h */,
@@ -289,6 +292,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B62404DA2C72E40F00F132C9 /* client.ovpn in Resources */,
 				B687BF152C699D0000B6C518 /* Assets.xcassets in Resources */,
 				B687BF412C69B80100B6C518 /* NEKitRule.conf in Resources */,
 				B687BF182C699D0000B6C518 /* Base in Resources */,

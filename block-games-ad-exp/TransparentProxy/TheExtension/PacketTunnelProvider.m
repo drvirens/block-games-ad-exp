@@ -22,112 +22,98 @@ static os_log_t myLog;
   }
 }
 
+
+
 - (void)startTunnelWithOptions:(NSDictionary *)options completionHandler:(void (^)(NSError *))completionHandler {
-  NSLog(@"VIREN: PacketTunnelProvider ::startTunnelWithOptions");
-  os_log(myLog, "Starting tunnel with options...");
+  os_log(myLog, "virenExtension: Starting tunnel with options...");
   
     // Cast the protocolConfiguration to NETunnelProviderProtocol to access providerConfiguration
   NETunnelProviderProtocol *protocol = (NETunnelProviderProtocol *)self.protocolConfiguration;
-    // Retrieve the server address from the provider configuration
-  NSString *serverAddress = protocol.providerConfiguration[@"serverAddress"];
-  if (serverAddress) {
-    os_log(myLog, "Retrieved server address: %{public}@", serverAddress);
+  
+    // Extract the ovpnContents from the provider configuration
+  NSString *ovpnContents = protocol.providerConfiguration[@"ovpnContents"];
+  
+    // Parse ovpnContents to extract the server address
+  NSString *serverAddress;
+  NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"remote\\s+([\\d\\.]+)\\s+(\\d+)" options:0 error:nil];
+  NSTextCheckingResult *match = [regex firstMatchInString:ovpnContents options:0 range:NSMakeRange(0, [ovpnContents length])];
+  if (match) {
+    serverAddress = [ovpnContents substringWithRange:[match rangeAtIndex:1]];
+    os_log(myLog, "virenExtension: Extracted server address from ovpnContents: %{public}@", serverAddress);
   } else {
-    os_log_error(myLog, "No server address found in provider configuration.");
+    os_log_error(myLog, "virenExtension: Could not find server address in ovpnContents.");
     NSError *error = [NSError errorWithDomain:@"PacketTunnelProviderErrorDomain"
                                          code:-1
-                                     userInfo:@{NSLocalizedDescriptionKey: @"Server address is missing in provider configuration."}];
+                                     userInfo:@{NSLocalizedDescriptionKey: @"Server address not found in ovpnContents."}];
     completionHandler(error);
     return;
   }
-
-    // Continue with setting up the tunnel using the server address
-  NEPacketTunnelNetworkSettings *networkSettings = [[NEPacketTunnelNetworkSettings alloc] initWithTunnelRemoteAddress:serverAddress];
   
-    // Assign an IP address to the tunnel interface.
-  networkSettings.IPv4Settings = [[NEIPv4Settings alloc] initWithAddresses:@[@"192.168.1.2"] subnetMasks:@[@"255.255.255.0"]];
+    // Setup the VPN connection using the extracted server address and ovpnContents
   
-    // Set up the route to direct all traffic through the tunnel (0.0.0.0/0).
-  NEIPv4Route *defaultRoute = [NEIPv4Route defaultRoute];
-  networkSettings.IPv4Settings.includedRoutes = @[defaultRoute];
+    // Convert ovpnContents to NSData to pass to the OpenVPN library (assuming such a library is used)
+  NSData *ovpnData = [ovpnContents dataUsingEncoding:NSUTF8StringEncoding];
   
-    // Set up DNS to use a specific DNS server
-  networkSettings.DNSSettings = [[NEDNSSettings alloc] initWithServers:@[@"8.8.8.8"]];
+    // Placeholder code for OpenVPN setup, replace with actual implementation
+  NSError *vpnError;
+  BOOL success = [self setupOpenVPNWithConfigData:ovpnData serverAddress:serverAddress error:&vpnError];
   
-    // Apply the network settings to the tunnel.
-  [self setTunnelNetworkSettings:networkSettings completionHandler:^(NSError * _Nullable error) {
-    if (error) {
-      os_log_error(myLog, "Set Tunnel Network settings failed with error: %{public}@", error);
-      completionHandler(error);
-      return;
-    }
-    
-    os_log(myLog, "Set Tunnel Network settings succeeded.");
-    
-      // Start reading and handling packets.
-    [self startHandlingPackets];
-    
-    os_log(myLog, "PacketTunnelProvider Tunnel started successfully");
+  if (success) {
+    os_log(myLog, "virenExtension: VPN tunnel started successfully with server address: %{public}@", serverAddress);
     completionHandler(nil);
-  }];
-  
-  os_log(myLog, "Last synchronous line of startTunnelWithOptions.");
+  } else {
+    os_log_error(myLog, "virenExtension: Failed to start VPN tunnel with error: %{public}@", vpnError.localizedDescription);
+    completionHandler(vpnError);
+  }
 }
 
-//
-//- (void)startTunnelWithOptions:(NSDictionary *)options completionHandler:(void (^)(NSError *))completionHandler {
-//  NSLog(@"VIREN: PacketTunnelProvider ::startTunnelWithOptions");
-//  os_log(myLog, "Starting tunnel with options...");
-//  
-//    // Set the tunnel's remote address to something meaningful for testing.
-//  NEPacketTunnelNetworkSettings *networkSettings = [[NEPacketTunnelNetworkSettings alloc] initWithTunnelRemoteAddress:@"8.8.8.8"];
-//  
-//    // Assign an IP address to the tunnel interface.
-//  networkSettings.IPv4Settings = [[NEIPv4Settings alloc] initWithAddresses:@[@"192.168.1.2"] subnetMasks:@[@"255.255.255.0"]];
-//  
-//    // Set up the route to direct all traffic through the tunnel (0.0.0.0/0).
-//  NEIPv4Route *defaultRoute = [NEIPv4Route defaultRoute];
-//  networkSettings.IPv4Settings.includedRoutes = @[defaultRoute];
-//  
-//    // Set up DNS to use Cloudflare's DNS server (8.8.8.8).
-//  networkSettings.DNSSettings = [[NEDNSSettings alloc] initWithServers:@[@"8.8.8.8"]];
-//  
-//    // Apply the network settings to the tunnel.
-//  [self setTunnelNetworkSettings:networkSettings completionHandler:^(NSError * _Nullable error) {
-//    if (error) {
-//      NSLog(@"VIREN PacketTunnelProvider Failed to set network settings: %@", error);
-//      os_log(myLog, "Set Tunnel Network settings failed with error: %{public}@", error);
-//      completionHandler(error);
-//      return;
-//    }
-//    
-//    os_log(myLog, "Set Tunnel Network settings succeeded with error: %{public}@", error);
-//    
-//      // Start reading and handling packets.
-//    [self startHandlingPackets];
-//    
-//    NSLog(@"VIREN PacketTunnelProvider Tunnel started successfully");
-//    completionHandler(nil);
-//  }];
-//  
-//  os_log(myLog, "last synchronous line of start tunnel fn");
-//}
+- (BOOL)setupOpenVPNWithConfigData:(NSData *)configData serverAddress:(NSString *)serverAddress error:(NSError **)error {
+    // This is a placeholder method for setting up the OpenVPN connection
+    // Replace with the actual implementation using the OpenVPN library
+  
+    // Example of how it might be implemented (this is pseudocode)
+  /*
+   OpenVPNConfiguration *config = [[OpenVPNConfiguration alloc] initWithData:configData];
+   config.serverAddress = serverAddress;
+   OpenVPNManager *manager = [OpenVPNManager sharedManager];
+   BOOL result = [manager startVPNWithConfiguration:config error:error];
+   return result;
+   */
+  
+    // Placeholder return value
+  return YES; // Return YES if successful, NO if there was an error
+}
+
+
 
 - (void)startHandlingPackets {
-  os_log(myLog, "Will start handling packets now....");
+  os_log(myLog, "virenExtension: Will start handling packets now....");
 
   
   [self.packetFlow readPacketsWithCompletionHandler:^(NSArray<NSData *> *packets, NSArray<NSNumber *> *protocols) {
+    
+    NSMutableArray<NSData *> *processedPackets = [NSMutableArray array];
+    NSMutableArray<NSNumber *> *processedProtocols = [NSMutableArray array];
+    
     for (NSData *packet in packets) {
-      os_log(myLog, "readPacketsWithCompletionHandler ....%{public}@ ", packet);
+      os_log(myLog, "virenExtension: readPacketsWithCompletionHandler ....%{public}@ ", packet);
+      
+      
+        // Process the packet as needed (e.g., modify, encrypt, forward, etc.)
+        // For now, we'll just pass the packet through unmodified
+      [processedPackets addObject:packet];
+      [processedProtocols addObject:@([protocols indexOfObject:packet])];
     }
+    
+      // Write the processed packets back to the network
+    [self.packetFlow writePackets:processedPackets withProtocols:processedProtocols];
+    
     
       // Continue reading more packets.
     [self startHandlingPackets];
   }];
 }
 
-#pragma mark - GCDAsyncSocketDelegate
 
 - (void)stopTunnelWithReason:(NEProviderStopReason)reason completionHandler:(void (^)(void))completionHandler {
   NSLog(@"Stopping tunnel");
