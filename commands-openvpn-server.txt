@@ -1,0 +1,41 @@
+start openvpn server
+
+sudo systemctl start openvpn@server
+
+here, @server name is configuration file name located /etc/openvpn/server.conf 
+
+
+
+status check for open vpn server
+
+sudo systemctl status openvpn@server
+
+
+
+stop vpn server
+
+sudo systemctl stop openvpn@server
+
+
+If you’re running systemd, changing this variable requires running systemctl daemon-reload followed by a restart of the openvpn service (if you removed entries you may have to stop those manually).
+
+sudo systemctl daemon-reload 
+sudo systemctl stop openvpn@server
+sudo systemctl status openvpn@server
+sudo systemctl start openvpn@server
+sudo systemctl status openvpn@server
+
+
+
+
+client openvpn client on same local ubuntu machine for testing
+
+sudo systemctl stop openvpn@client
+sudo systemctl start openvpn@client
+sudo systemctl status openvpn@client
+
+
+
+sudo tail /var/log/openvpn.log
+
+

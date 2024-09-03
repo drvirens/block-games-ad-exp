@@ -1,16 +1,14 @@
-//
-//  PacketTunnelProvider.m
-//  TheExtension
-//
-//  Created by Virendra Shakya on 8/11/24.
-//
+  //
+  //  PacketTunnelProvider.m
+  //  TheExtension
+  //
+  //  Created by Virendra Shakya on 8/11/24.
+  //
 
 #import <os/log.h>
 #import "PacketTunnelProvider.h"
 
-
 @implementation PacketTunnelProvider
-
 
   // Define a custom log object for your subsystem and category
 static os_log_t myLog;
@@ -21,8 +19,6 @@ static os_log_t myLog;
     myLog = os_log_create("ai.msg.nxt.TransparentProxy.TheExtension", "networking-extension");
   }
 }
-
-
 
 - (void)startTunnelWithOptions:(NSDictionary *)options completionHandler:(void (^)(NSError *))completionHandler {
   os_log(myLog, "virenExtension: Starting tunnel with options...");
@@ -49,55 +45,41 @@ static os_log_t myLog;
     return;
   }
   
-    // Setup the VPN connection using the extracted server address and ovpnContents
+    // Configure the VPN tunnel using NEPacketTunnelNetworkSettings
+  NEPacketTunnelNetworkSettings *settings = [[NEPacketTunnelNetworkSettings alloc] initWithTunnelRemoteAddress:serverAddress];
   
-    // Convert ovpnContents to NSData to pass to the OpenVPN library (assuming such a library is used)
-  NSData *ovpnData = [ovpnContents dataUsingEncoding:NSUTF8StringEncoding];
+    // Configure IP settings
+  NEIPv4Settings *ipv4Settings = [[NEIPv4Settings alloc] initWithAddresses:@[@"10.8.0.2"] subnetMasks:@[@"255.255.255.0"]];
+  ipv4Settings.includedRoutes = @[[NEIPv4Route defaultRoute]];
+  settings.IPv4Settings = ipv4Settings;
   
-    // Placeholder code for OpenVPN setup, replace with actual implementation
-  NSError *vpnError;
-  BOOL success = [self setupOpenVPNWithConfigData:ovpnData serverAddress:serverAddress error:&vpnError];
+    // Set DNS servers (example using Google's public DNS)
+  settings.DNSSettings = [[NEDNSSettings alloc] initWithServers:@[@"8.8.8.8", @"8.8.4.4"]];
   
-  if (success) {
-    os_log(myLog, "virenExtension: VPN tunnel started successfully with server address: %{public}@", serverAddress);
+    // Apply the settings
+  [self setTunnelNetworkSettings:settings completionHandler:^(NSError * _Nullable error) {
+    if (error) {
+      os_log_error(myLog, "virenExtension: Failed to apply tunnel network settings: %{public}@", error.localizedDescription);
+      completionHandler(error);
+      return;
+    }
+    
+      // Start handling packets once the tunnel is established
+    [self startHandlingPackets];
+    os_log(myLog, "virenExtension: Tunnel network settings applied successfully.");
     completionHandler(nil);
-  } else {
-    os_log_error(myLog, "virenExtension: Failed to start VPN tunnel with error: %{public}@", vpnError.localizedDescription);
-    completionHandler(vpnError);
-  }
+  }];
 }
-
-- (BOOL)setupOpenVPNWithConfigData:(NSData *)configData serverAddress:(NSString *)serverAddress error:(NSError **)error {
-    // This is a placeholder method for setting up the OpenVPN connection
-    // Replace with the actual implementation using the OpenVPN library
-  
-    // Example of how it might be implemented (this is pseudocode)
-  /*
-   OpenVPNConfiguration *config = [[OpenVPNConfiguration alloc] initWithData:configData];
-   config.serverAddress = serverAddress;
-   OpenVPNManager *manager = [OpenVPNManager sharedManager];
-   BOOL result = [manager startVPNWithConfiguration:config error:error];
-   return result;
-   */
-  
-    // Placeholder return value
-  return YES; // Return YES if successful, NO if there was an error
-}
-
-
 
 - (void)startHandlingPackets {
   os_log(myLog, "virenExtension: Will start handling packets now....");
-
   
   [self.packetFlow readPacketsWithCompletionHandler:^(NSArray<NSData *> *packets, NSArray<NSNumber *> *protocols) {
-    
     NSMutableArray<NSData *> *processedPackets = [NSMutableArray array];
     NSMutableArray<NSNumber *> *processedProtocols = [NSMutableArray array];
     
     for (NSData *packet in packets) {
       os_log(myLog, "virenExtension: readPacketsWithCompletionHandler ....%{public}@ ", packet);
-      
       
         // Process the packet as needed (e.g., modify, encrypt, forward, etc.)
         // For now, we'll just pass the packet through unmodified
@@ -108,12 +90,12 @@ static os_log_t myLog;
       // Write the processed packets back to the network
     [self.packetFlow writePackets:processedPackets withProtocols:processedProtocols];
     
+    os_log(myLog, "virenExtension: writePackets processedPackets  withProtocols....%{public}@ ", processedProtocols);
     
       // Continue reading more packets.
     [self startHandlingPackets];
   }];
 }
-
 
 - (void)stopTunnelWithReason:(NEProviderStopReason)reason completionHandler:(void (^)(void))completionHandler {
   NSLog(@"Stopping tunnel");
@@ -121,6 +103,5 @@ static os_log_t myLog;
     // Clean up resources, close connections, etc.
   completionHandler();
 }
-
 
 @end
